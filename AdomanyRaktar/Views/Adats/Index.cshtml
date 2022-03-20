@@ -1,0 +1,72 @@
+﻿@model AdomanyRaktar.Models.AdomanyKereses
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<form asp-controller="Adats" asp-action="Index" method="get">
+    <div class="row">
+        <div class="col">
+            <input asp-for="AdomanyKereso" type="text" class="form-control" placeholder="Adomany" aria-label="Adomány:">
+        </div>
+        <div class="col">
+            <select asp-for="KategoriaKereso" asp-items="Model.KategoriaLista" class="form-select" aria-label="Kategóriák">
+                <option value="" selected>Összes</option>
+            </select>
+        </div>
+        <div class="col">
+            <button type="submit" class="btn btn-warning">Keresés</button>
+        </div>
+    </div>
+</form>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Adomanyok[0].Adomany)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Adomanyok[0].Kategoria)
+            </th>
+            <th class="d-sm-none">
+                @Html.DisplayNameFor(model => model.Adomanyok[0].Csomegyseg)
+            </th>
+            <th class="d-sm-none d-md-none">
+                @Html.DisplayNameFor(model => model.Adomanyok[0].Mennyiseg)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Adomanyok)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Adomany)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Kategoria)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Csomegyseg)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mennyiseg)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

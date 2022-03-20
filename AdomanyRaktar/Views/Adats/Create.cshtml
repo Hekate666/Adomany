@@ -1,0 +1,48 @@
+﻿@model AdomanyRaktar.Models.Adat
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Adat</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Adomany" class="control-label"></label>
+                <input asp-for="Adomany" class="form-control" />
+                <span asp-validation-for="Adomany" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Kategoria" class="control-label"></label>
+                <input asp-for="Kategoria" class="form-control" />
+                <span asp-validation-for="Kategoria" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Csomegyseg" class="control-label"></label>
+                <input asp-for="Csomegyseg" class="form-control" />
+                <span asp-validation-for="Csomegyseg" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mennyiseg" class="control-label"></label>
+                <input asp-for="Mennyiseg" class="form-control" />
+                <span asp-validation-for="Mennyiseg" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
